@@ -1,0 +1,165 @@
+﻿@{
+    ViewBag.Title = "ActionBooks";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using TermProject.Models
+
+@section Categories{
+    <div class="col-md-3">
+        <p class="lead">Categories</p>
+
+
+
+        <div class="list-group">
+            <a href="/Home/Index" class="list-group-item">All</a>
+            @{
+                BookStoreEntities5 db = new BookStoreEntities5();
+                foreach (Genre g in db.Genres)
+                {
+                    string[] arr = g.category.Split('B');
+                    <a href="/Home/@g.category" class="list-group-item">@arr[0]</a>
+                }
+
+            }
+
+        </div>
+    </div>
+}
+
+
+
+@section Slider{
+    <div class="col-md-9">
+
+        <div class="row carousel-holder">
+
+            <div class="col-md-12">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img class="slide-image" src="~/divergent-book-back-cover-i19.jpg" alt="">
+                        </div>
+                        <div class="item">
+                            <img class="slide-image" src="~/Insurgent_banniÃ¨re.jpg" alt="">
+                        </div>
+
+                    </div>
+                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+}
+
+
+
+
+<div class="row">
+
+
+    @{
+        
+        BookStoreEntities5 context = new BookStoreEntities5();
+
+
+        var y = context.BookDetails.ToList();
+        foreach (var book in y)
+        {
+            if (book.Genre.Equals("Action Books"))
+            {
+                int bookId = book.Id;
+
+                <div class="col-sm-4 col-lg-4 col-md-4">
+
+                    <div class="thumbnail">
+                        <img src="~/Files/@book.Image" alt="">
+                        <div class="caption">
+                            <h4 class="pull-right">Rs.@book.Price</h4>
+                            <h4>
+                                @book.BookName
+                            </h4>
+                            <p>@book.Review</p>
+                        </div>
+                        <div class="ratings">
+                            <a class="pull-right" href="#"
+                               data-toggle="modal"
+                               data-target="#myModal">Reviews</a>
+
+                            <div id="myModal" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Reviews</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>1) Excellent book.</p>
+                                            <p>2) Must Read.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <p>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                            </p>
+                            
+                           @Html.ActionLink("Add To Cart", "addToCart", new { id = @book.Id}, new { @class="btn btn-lg btn-success"  })
+                            
+                            @*  <input type="button" class="btn btn-lg btn-success" value="Add to Cart" onclick="location.href=' *@
+
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+
+        }
+    }
+
+
+
+
+
+
+
+    <div class="col-sm-4 col-lg-4 col-md-4">
+        <h4>
+            <a href="#">Done Shopping?</a>
+        </h4>
+
+        <a class="btn btn-primary" href="~/Home/SignIn">View Cart</a>
+    </div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+

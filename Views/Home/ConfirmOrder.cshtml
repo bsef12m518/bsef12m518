@@ -1,0 +1,44 @@
+﻿@using TermProject.Models
+@{
+var obj=(Order)ViewData["myObject"];
+}
+<
+    <div id="page-wrapper" style="background-image:url(/TermProject/images3.jpg)">
+    <div class="row">
+        <div class="col-lg-12">
+
+
+            @{
+                BookStoreEntities5 db = new BookStoreEntities5();
+                Customer c = db.Customers.First(it => it.CId == @obj.CId);
+
+                <h1 class="page-header">Thank you for Shopping @c.Name! :)</h1>
+                <p>Your Order will be delivered within 2 weeks </p>
+                <br />
+                <br />
+
+
+
+            }
+
+            <h1>OrderId: @obj.OId</h1>
+            <h2>Amount: Rs.@obj.Amount</h2>
+
+
+
+        </div>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+   

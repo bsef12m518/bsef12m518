@@ -1,0 +1,80 @@
+﻿@using TermProject.Models
+
+
+     @section Categories{
+    <div class="col-md-3">
+        <p class="lead">Categories</p>
+
+
+
+        <div class="list-group">
+            <a href="/Home/Index" class="list-group-item">All</a>
+            @{
+                BookStoreEntities5 db = new BookStoreEntities5();
+                foreach (Genre g in db.Genres)
+                {
+                    string[] arr = g.category.Split('B');
+                    <a href="/Home/@g.category" class="list-group-item">@arr[0]</a>
+                }
+
+            }
+
+        </div>
+    </div>
+}
+
+
+@section Slider{
+
+<div class="col-md-9">
+
+    <div class="row carousel-holder">
+
+        <div class="col-md-12">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img class="slide-image" src="~/brbs-e.jpg" alt="">
+                    </div>
+                    <div class="item">
+                        <img class="slide-image" src="~/Katipo-Books-924x390.jpg" alt="">
+                    </div>
+                    <div class="item">
+                        <img class="slide-image" src="~/Most-Frequently-Challenged-Book-ftr.jpg" alt="">
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+}
+
+
+<div class="row">
+
+    <h1>About Us</h1>
+    <p>
+        We have diversified our bookseller base to become a complete one-stop solution for book lovers, and have also gained sole distributorship in Pakistan for some of the best-known books and series in the world.
+    </p>
+    <p>
+        Our online store is just as vast and dynamic as any other bookstore, where we regularly keep our customers abreast of all the new books. Searching for books can be quite a laborious task, especially when having to do so from a colossal range like ours, but we have categorized our collection, so that browsing is not only convenient, but also fun! We deliver books free of cost all across Pakistan!
+    </p>
+    <p>
+        With round-the-clock insights on books; interesting promotions; and lively artwork, our website is a virtual sanctuary where any book lover would like to retreat into.
+    </p>
+</div>
+
+</div>
+
+        

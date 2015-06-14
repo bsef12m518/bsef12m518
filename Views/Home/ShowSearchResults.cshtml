@@ -1,0 +1,76 @@
+﻿@using TermProject.Models
+@ViewBag.MyList
+
+<div class="row">
+    <div class="col-md-9">
+
+    @{
+
+       // BookStoreEntities5 context = new BookStoreEntities5();
+
+
+       // var y = context.BookDetails.ToList();
+        foreach (var book in ViewBag.MyList)
+        {
+            
+                int bookId = book.Id;
+
+                <div class="col-sm-4 col-lg-4 col-md-4">
+
+                    <div class="thumbnail">
+                        <img src="~/Files/@book.Image" alt="">
+                        <div class="caption">
+                            <h4 class="pull-right">Rs.@book.Price</h4>
+                            <h4>
+                                @book.BookName
+                            </h4>
+                            <p>@book.Review</p>
+                        </div>
+                        <div class="ratings">
+                            <a class="pull-right" href="#"
+                               data-toggle="modal"
+                               data-target="#myModal">Reviews</a>
+
+                            <div id="myModal" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Reviews</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>1) Excellent book.</p>
+                                            <p>2) Must Read.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <p>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                            </p>
+
+                            @Html.ActionLink("Add To Cart", "addToCart", new { id = @book.Id }, new { @class = "btn btn-lg btn-success" })
+
+                            @*  <input type="button" class="btn btn-lg btn-success" value="Add to Cart" onclick="location.href=' *@
+
+                        </div>
+                    </div>
+                </div>
+
+            
+       
+
+        }
+    }
+</div>
+</div>

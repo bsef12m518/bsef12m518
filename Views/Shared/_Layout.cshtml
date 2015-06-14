@@ -1,0 +1,113 @@
+﻿@using TermProject.Models
+
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Online Book Store</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/shop-homepage.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/js/jquery.js"></script>
+
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Styles/main.css")" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body >
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+
+            <div class="navbar-header">
+
+                <a class="navbar-brand" href="~/Home/Index">E-Book Store</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="~/Customer/SignUp">Sign Up</a>
+                    </li>
+                    <li>
+                        <a href="~/Home/AboutUs">About</a>
+                    </li>
+                    <li>
+                        <a href="~/Home/Services">Services</a>
+                    </li>
+                    <li>
+                        <a href="~/Home/ContactUs">Contact</a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/Login">Admin</a>
+                    </li>
+                    <li>
+                        <a href="~/Home/Search" class="btn-primary">Search</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+          
+              
+                @RenderSection("Categories", false)
+
+             
+
+                @RenderSection("Slider", false)
+
+
+                @RenderBody()
+
+
+
+
+            </div>
+
+    </div>
+
+
+    <!-- /.container -->
+
+    <div class="container">
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; E-Book Store 2015</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</body>
+
+</html>
